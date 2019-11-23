@@ -118,12 +118,13 @@ function redeemFromMicroChain(amount) {
     var signtx = utils.chain3.signTransaction(rawTx, privatekey);
     var transHash = utils.chain3.mc.sendRawTransaction(signtx);
     logger.info("transHash:", transHash);
+    utils.waitBlockForTransactionInMicroChain(subchainaddr, transHash);
 }
 
 
 
 // deployDapp(123456, 100);
-// buyMintToken(400);
-redeemFromMicroChain(30000);
+buyMintToken(100);
+// redeemFromMicroChain(30000);
 
 

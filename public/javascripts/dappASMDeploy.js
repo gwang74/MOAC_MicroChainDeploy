@@ -99,6 +99,7 @@ function redeemFromMicroChain(amount) {
     var signtx = utils.chain3.signTransaction(rawTx, privatekey);
     var transHash = utils.chain3.mc.sendRawTransaction(signtx);
     logger.info("transHash:", transHash);
+    utils.waitBlockForTransactionInMicroChain(subchainaddr, transHash);
 }
 
 // deployDapp(1000);

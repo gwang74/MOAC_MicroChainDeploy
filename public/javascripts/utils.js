@@ -152,7 +152,6 @@ function waitBlockForTransactionInMicroChain(microChain, transactionHash) {
 
     while (true) {
         let receipt = chain3.scs.getTransactionReceipt(microChain, transactionHash);
-        console.log(receipt)
         if (receipt && chain3.fromDecimal(receipt.status) == 1) {
             logger.info("transaction successfully!");
             break;
