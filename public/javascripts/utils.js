@@ -134,11 +134,11 @@ function waitBlockForContractInMicroChain(microChain, transactionHash) {
     logger.info("Waiting a mined block to include your contract...");
 
     while (true) {
-        let receipt = chain3.scs.getTransactionReceipt(microChain, transactionHash);
-        if (receipt && chain3.fromDecimal(receipt.status) == 1 && receipt.contractAddress) {
+        let receipt = chain3.scs.getReceiptByHash(microChain, transactionHash);
+        if (receipt && !receipt.failed) {
             logger.info("contract has been deployed at " + receipt.contractAddress);
             return receipt.contractAddress;
-        } else if (receipt && chain3.fromDecimal(receipt.status) == 0) {
+        } else if (receipt && receipt.failed) {
             logger.info("contract deploy failed!!!");
             break;
         }
@@ -151,11 +151,11 @@ function waitBlockForTransactionInMicroChain(microChain, transactionHash) {
     logger.info("Waiting a mined block to include ", transactionHash);
 
     while (true) {
-        let receipt = chain3.scs.getTransactionReceipt(microChain, transactionHash);
-        if (receipt && chain3.fromDecimal(receipt.status) == 1) {
+        let receipt = chain3.scs.getReceiptByHash(microChain, transactionHash);
+        if (receipt && !receipt.failed) {
             logger.info("transaction successfully!");
             break;
-        } else if (receipt && chain3.fromDecimal(receipt.status) == 0) {
+        } else if (receipt && receipt.failed) {
             logger.info("transaction failed!");
             break;
         }

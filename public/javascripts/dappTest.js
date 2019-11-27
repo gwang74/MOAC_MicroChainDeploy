@@ -14,7 +14,9 @@ var _to = '0x326a276713ee4125e35a71f4cfcc559fb3ba5083';
 // transfer(_to);
 
 var _hash = '0x992fcc5f26773ea4e9821702d0aeb775413e9729b3e8b30754c2d542efc5b690';
-getTranscation(_hash);
+// getTranscation(_hash);
+
+tokenTransfer();
 
 /**
  * 原生币转账
@@ -50,7 +52,7 @@ function transfer(_to) {
 
 
 function getTranscation(_hash) {
-    // var transcation = utils.chain3.scs.getReceiptByHash(subchainaddr, _hash);
+    var transcation = utils.chain3.scs.getReceiptByHash(subchainaddr, _hash);
     // logger.info(transcation);
     // utils.chain3.scs.getReceiptByHash(subchainaddr, _hash, function (e, result) {
     //     if (!e) {
@@ -69,5 +71,25 @@ function getTranscation(_hash) {
     logger.info(memo);
     var memoStr = Buffer.from(memo, 'hex').toString();
     logger.info(memoStr);
+}
+
+function tokenTransfer() {
+    var nonce = utils.getNonce(baseaddr);
+    var rawTx = {
+        to: "0x8915ebb43ed9391258114f9f810ab3babf71058c",
+        nonce: utils.chain3.toHex(nonce),
+        gasLimit: utils.chain3.toHex("2000000"),
+        gasPrice: utils.chain3.toHex(utils.chain3.mc.gasPrice),
+        chainId: utils.chain3.toHex(utils.chain3.version.network),
+        data: utils.chain3.sha3('transfer(address,uint256)').substr(0, 10) + utils.chain3.encodeParams(['address', 'uint256'], ['0x67d97d7a1491e3e4d87821d4a86eb51b0ac0ffda', utils.chain3.toSha(10, 'mc')])
+    };
+
+    var signtx = utils.chain3.signTransaction(rawTx, privatekey);
+    var transHash = utils.chain3.mc.sendRawTransaction(signtx);
+
+    logger.info("transHash", transHash);
+
+    // Check for the two POO contract deployments
+    utils.waitBlockForTransaction(transHash);
 }
 

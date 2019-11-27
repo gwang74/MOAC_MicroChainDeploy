@@ -1,9 +1,9 @@
 {
 	"baseaddr": "0x7a2dc129b3d794e4e8a009c83ffd7a2412f5e326",
 	"scs": [
-		"0x73691a6D81B0BdED7C8D82F99Aa3686D4aFCf95b",
-		"0x1ee55E8bCcBbdeAa7eF9555cEA20ad5dc5Ec10DA",
-		"0xe1353c656765359F1cC7D91ec19414b4566E40a7"
+		"0x69889265c2c498E57a5c6AA4Ff8B46e0997a8EE8",
+		"0x6Af3Ea1d7e8109C32Ac54CC14CCDdd2E1Faa73e3",
+		"0xd7cCddc1a67E2910B3974144087cEFF3EF635Fb4"
 	],
 	"scsUri": "http://127.0.0.1:8547",
 	"vnodeVia": "0x5e2e03d1fb8aed9dbbd939fcc1a9f2aa9afdfde4",
@@ -15,7 +15,7 @@
 	"minScsDeposit": 1,
 	"microChainDeposit": 1,
 	"addScs": [],
-	"monitorAddr": "0x9dD4d98d66CeB5800343D397da64e3345458fdC1",
+	"monitorAddr": "0x9F1b298Acda0c40e443f13f2Cd484067f9a428d5",
 	"monitorLink": "127.0.0.1:2345",
 	"privatekey": "86736091a441dffeb8656e731474433aaf531c4adab0497fa38d36215f44f18d",
 	"savedAddr": "0x7a2dc129b3d794e4e8a009c83ffd7a2412f5e322",

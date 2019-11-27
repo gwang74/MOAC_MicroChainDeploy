@@ -1,7 +1,7 @@
 {
-	"vnodePoolAddr": "0x9b634debb14b5c438b131d76f3e616b750b4688d",
-	"scsPoolAddr": "0xa11f658da33585b06645c34593204581a6d707f1",
-	"microChainAddr": "0x32231dd017075bb997f27bde90a14d80829e9ab0",
-	"dappAddr": "0x226181662dcf24cc7eee0c6d194dc3ee882ce7b0",
-	"savedHash": "0x62ed84c23dec26b5dff32c6d10bc37438363a48dec4f6f053186b1a977db9d0a"
+	"vnodePoolAddr": "0x44dcc2d0a1b68ddc3ea5a806304de4c6131ab6b6",
+	"scsPoolAddr": "0x4267b00e4ceec0a690433f926544a4e421b7d22a",
+	"microChainAddr": "0x3f0d6a071cdf7140cec497f1cfd881a59a14b20d",
+	"dappAddr":"0x226181662dcf24cc7eee0c6d194dc3ee882ce7b0",
+	"savedHash": "0xe5f70ebfe55daa4f8f98d53b9684579b5f1bd09603f2489981636415f9ff38a4"
 }

@@ -283,10 +283,11 @@ function config(req, res, next) {
     let newConfig = req.body;
     var configPath = path.resolve(__dirname, "../../initConfig.json");
     var config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-    newConfig['privatekey'] = config["privatekey"];
-    newConfig['savedAddr'] = config["savedAddr"];
-    newConfig['password'] = config["password"];
-    newConfig['ercAddr'] = config["ercAddr"];
+    newConfig["privatekey"] = config["privatekey"];
+    newConfig["savedAddr"] = config["savedAddr"];
+    newConfig["password"] = config["password"];
+    newConfig["ercAddr"] = config["ercAddr"];
+    newConfig["scsUri"] = config["scsUri"];
     fs.writeFileSync(configPath, JSON.stringify(newConfig, null, '\t'), 'utf8');
     res.send('{ code: 0, msg: "init config success!" }')
 }
@@ -307,7 +308,6 @@ function getInitConfig(req, res, next) {
 }
 
 function verifyPwd(req, res, next) {
-    console.log(req.body.pwd);
     let configPath = path.resolve(__dirname, "../../initConfig.json");
     let initConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
     let password = initConfig["password"];
