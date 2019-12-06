@@ -67,6 +67,10 @@ contract VnodeProtocolBase {
     }
 
     // register for vnode
+    // vnode - address to return the bond, user should have its keystore or privatekey to use the refund.
+    // via - vnode beneficial address, in the vnodeconfig.json
+    // link - VNODE's IP address
+    // rpclink - VNODE rpc 
     function register(address vnode, address via, string link, string rpclink) public payable returns (bool) {
         //already registered or not enough bond
         require( vnodeList[vnode] == 0 && msg.value >= bondMin*10**18 );

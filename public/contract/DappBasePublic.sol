@@ -13,10 +13,12 @@ pragma experimental ABIEncoderV2;
  * all other DAPPs.
  * This contract allows other users to deploy DAPP than
  * the MicroChain owner.
+ * Note the input token supply needs to be the same as 
+ * the MicroChain token supply.
  * 
  * Updated:
  * 2019/05/23 Added allDeploySwitch to allow non-owner deploy
- *            Dapps on the MicroChain. Default is true,
+ *            Dapps on the MicroChain. Default is true.
  */
 contract DappBase {
     enum DappState {disable, enable, haveCoin, noCoin}

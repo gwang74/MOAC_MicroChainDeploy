@@ -8,7 +8,7 @@ pragma solidity ^0.4.11;
  * SCS need to use this contract to register/withdraw
  * from the subchain.
  * Requires : none
- * Required by: SubChainBase.sol
+ * Required by: ChainBaseASM.sol
  */
 
 contract SysContract {
