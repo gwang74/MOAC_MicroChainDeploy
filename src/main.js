@@ -13,7 +13,7 @@ Vue.use(VueResource)
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
-window.chain3 = new Chain3(new Chain3.providers.HttpProvider("https://mtnode1.jccdex.cn"));
+window.chain3 = new Chain3(new Chain3.providers.HttpProvider("http://localhost:8545"));
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

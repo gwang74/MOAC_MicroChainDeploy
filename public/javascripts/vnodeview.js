@@ -2,8 +2,8 @@ var Chain3 = require('chain3');
 var fs = require('fs');
 var solc = require('solc');
 
-var vnoderpc = 'https://moac12jcc7601.jccdex.cn:8550';
-var addr_vnodeprotocolbase = '0x8ecaf7769e7a2cd897387a3b6d35f5e4762de8eb'  
+var vnoderpc = 'http://39.99.178.42:8545';
+var addr_vnodeprotocolbase = '0x68b21c47a1c2ea6cb8c6d641c17603f929456240'  
 // var addr_vnodeprotocolbase = '0xa3dbf5effc42533681856dd382de65ff58990c99'  
 
 // check chain3
@@ -34,6 +34,6 @@ for (i = 0; i < vcount; i++) {
 	vstore = vnodeprotocolbase.vnodeStore(i);
 	//console.log(" **********  vnode vstore:" + vstore);
 	
-	console.log(" **********  vnodeStore via:", vstore.toString());
+	console.log(" **********  vnodeStore via:", vstore);
 	//console.log(" **********  vnodeStore via:", vstore.slice(0,1).toString());
 }

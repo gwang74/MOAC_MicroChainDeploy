@@ -1,24 +1,36 @@
 {
-	"baseaddr": "0x7a2dc129b3d794e4e8a009c83ffd7a2412f5e326",
+	"baseaddr": "0x8aacb5febf12546ca47fc5e9aa1bd1407378ad7a",
 	"scs": [
-		"0x84434771a2331635adfaa93FbfF331662Ed710B6",
-		"0xAaa16443ab108a7E937eD80b3117E937c4a82F3E",
-		"0xF475D571F1fa9ab78282Cd59aDD3fBD68Eb3BA86"
+		"0x077137bb18583be4cf6cf6970738e54bb3ef2cba",
+		"0x3e0d176a89d49ba723b6e5cf0456bbdf3b8fdc8c",
+		"0xe545a84c7e932a7c6d8bbe157dfb546a40f5fff8",
+		"0x839e9b99da3c295b8af374ecc14d58b2eed51a5b",
+		"0x44e6418b2d193250a193eaa289f0e9a6df749aa5",
+		"0xcebcc7aa59dac30700366204b7a9b47b6e23f5c4",
+		"0x7d4f20dc0712d13c8c2b9b195134938f4940722c",
+		"0xccca3e92275a1f1b07d01b182c88ef9efd7c030c",
+		"0x38c1856b18b6da87c3225e0231731ba442ff5318"
 	],
-	"vnodeVia": "0x5e2e03d1fb8aed9dbbd939fcc1a9f2aa9afdfde4",
-	"vnodeUri": "http://localhost:8545",
+	"vnode": [
+		{
+			"vnodeConnectUrl": "",
+			"vnodeVia": ""
+		}
+	],
+	"vnodeVia": "0x181f542d0637e8d5130cf0077ce0c22be47f00f7",
+	"vnodeUri": "http://39.99.178.42:8545",
 	"vnodeConnectUrl": "127.0.0.1:50062",
 	"minScsRequired": 3,
 	"rpcLink": "",
 	"minVnodeDeposit": 1,
-	"minScsDeposit": 1,
+	"minScsDeposit": 5,
 	"microChainDeposit": 1,
 	"addScs": [],
-	"monitorAddr": "0xc3fF66df9Fd19a058B12Addaaa2ef837ED4Ea41d",
-	"monitorLink": "localhost:2345",
-	"privatekey": "86736091a441dffeb8656e731474433aaf531c4adab0497fa38d36215f44f18d",
+	"monitorAddr": "0xf0c46f4374064d6a8118ae007dbc80e34f4dfc1c",
+	"monitorLink": "18.162.58.208:8547",
+	"privatekey": "da6f39ef485ce945be669a3bcb3a2863330f8ff0d783d3bed260b6af65911e3a",
 	"savedAddr": "0x7a2dc129b3d794e4e8a009c83ffd7a2412f5e322",
 	"password": "moac123",
 	"ercAddr": "",
-	"scsUri": "http://127.0.0.1:2345"
+	"scsUri": "http://39.99.178.42:8547"
 }

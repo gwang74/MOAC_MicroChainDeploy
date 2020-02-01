@@ -1,5 +1,7 @@
 var fs = require('fs');
+var solc = require('solc');
 const Chain3 = require('chain3');
+// var utils = require('./utils.js');
 var path = require('path');
 var logger = require('./logger');
 var mcABIs = require('./mcABIs');
@@ -17,8 +19,7 @@ var subchainaddr = config['microChainAddr'];
 //Setup the VNODE provider to send the transaction to
 // and the SCS provider to get the results
 
-// chain3.setProvider(new chain3.providers.HttpProvider('http://192.168.1.105:8545'));
-chain3.setProvider(new chain3.providers.HttpProvider('http://39.99.178.42:8545'));
+chain3.setProvider(new chain3.providers.HttpProvider('https://moac12jcc7601.jccdex.cn:8550'));
 // chain3.setScsProvider(new chain3.providers.HttpProvider('http://localhost:8547'));
 
 if (!chain3.isConnected()) {
@@ -43,24 +44,21 @@ if (!chain3.isConnected()) {
 //     sleep(50000);
 // }
 
-var subchainbaseContract = chain3.mc.contract(JSON.parse(mcABIs.asmABI));
+var subchainbaseContract = chain3.mc.contract(JSON.parse('[{"constant":true,"inputs":[{"name":"addrs","type":"address[]"},{"name":"addr","type":"address"}],"name":"have","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"pos","type":"uint256"},{"name":"tosend","type":"address[]"},{"name":"amount","type":"uint256[]"},{"name":"times","type":"uint256[]"}],"name":"postFlush","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"dappAddr","type":"address"}],"name":"getDappABI","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"dappAddr","type":"address"},{"name":"dappOwner","type":"address"},{"name":"dappABI","type":"string"},{"name":"state","type":"uint256"}],"name":"updateDapp","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"newlist","type":"address[]"}],"name":"updateNodeList","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"userAddr","type":"address"},{"name":"pos","type":"uint256"}],"name":"getRedeemMapping","outputs":[{"name":"redeemingAddr","type":"address[]"},{"name":"redeemingAmt","type":"uint256[]"},{"name":"redeemingtime","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getCurNodeList","outputs":[{"name":"nodeList","type":"address[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"curNodeList","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"userAddr","type":"address"}],"name":"getEnterRecords","outputs":[{"name":"enterAmt","type":"uint256[]"},{"name":"entertime","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"dappAddr","type":"address"}],"name":"removeDapp","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"getDappList","outputs":[{"components":[{"name":"dappAddr","type":"address"},{"name":"owner","type":"address"},{"name":"dappABI","type":"string"},{"name":"state","type":"uint256"}],"name":"","type":"tuple[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"dappRecord","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"dappAddr","type":"address"}],"name":"getDappState","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"dappList","outputs":[{"name":"dappAddr","type":"address"},{"name":"owner","type":"address"},{"name":"dappABI","type":"string"},{"name":"state","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"redeemFromMicroChain","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[],"name":"coinName","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"allDeploySwitch","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"dappAddr","type":"address"},{"name":"dappOwner","type":"address"},{"name":"dappABI","type":"string"}],"name":"registerDapp","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"enterPos","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"_name","type":"string"},{"name":"_switch","type":"bool"}],"payable":true,"stateMutability":"payable","type":"constructor"}]'));
 // var res = subchainbaseContract.at('0x04a836585c7c0d548971992f086960a594f925ba').reset({ from: '0x7a2dc129b3d794e4e8a009c83ffd7a2412f5e326' });
-var res = subchainbaseContract.at("0x36aa307a4157653eafa47f327b11963ccf174ed4").getFlushStatus();
-console.log(res);
-var res = subchainbaseContract.at("0x36aa307a4157653eafa47f327b11963ccf174ed4").contractNeedFund();
-console.log(res);
-var res = chain3.fromSha(subchainbaseContract.at("0x36aa307a4157653eafa47f327b11963ccf174ed4").totalOperation());
-console.log(res);
-var res = subchainbaseContract.at("0x36aa307a4157653eafa47f327b11963ccf174ed4").flushInRound();
-console.log(res);
-var res = subchainbaseContract.at("0x36aa307a4157653eafa47f327b11963ccf174ed4").monitors.call(2);
-console.log(res);
-var res = subchainbaseContract.at("0x36aa307a4157653eafa47f327b11963ccf174ed4").nodeCount();
+// var res = subchainbaseContract.at("0x45c247e896cd1d022000cab13fc04a488e7d0aad").getFlushStatus();
+// console.log(res);
+// var res = subchainbaseContract.at("0x45c247e896cd1d022000cab13fc04a488e7d0aad").contractNeedFund();
+// console.log(res);
+// var res = subchainbaseContract.at("0x45c247e896cd1d022000cab13fc04a488e7d0aad").totalOperation();
+// console.log(res);
+// var res = subchainbaseContract.at("0x45c247e896cd1d022000cab13fc04a488e7d0aad").flushInRound();
+// console.log(res);
+var res = subchainbaseContract.at("0x45c247e896cd1d022000cab13fc04a488e7d0aad").getMonitorInfo().toString();
+// var res = subchainbaseContract.at("0x8d77c846be155d39119c38c7e4d18226d736583d").contractNeedFund();
 
 console.log(res);
 // reSet();
-// removeMonitorInfo();
-// registerAsMonitor('0xc648d9bb0a3d3cd6adb401fcafd4bd04dec7cd5b','13.57.233.166:8547');
 
 // utils.registerOpen('0x226181662dcf24cc7eee0c6d194dc3ee882ce7b0');
 // while (true) {
@@ -97,13 +95,13 @@ console.log(res);
 //     utils.sleep(5000);
 // }
 
-// utils.addMicroChainFund("0x36aa307a4157653eafa47f327b11963ccf174ed4", 20);
+// utils.addMicroChainFund("0xa593da7377aac9aad1d15658abd465a1f8ff6bc2", 3);
 
 // utils.registerOpen(subchainaddr);
 // utils.registerClose(subchainaddr);
 
 // addFund
-// utils.addMicroChainFund(subchainaddr, 3);
+// utils.addMicroChainFund(subchainaddr, 4);
 
 // addScss();
 
@@ -231,51 +229,6 @@ function reSet() {
         gasPrice: utils.chain3.toHex(utils.chain3.mc.gasPrice),
         chainId: utils.chain3.toHex(utils.chain3.version.network),
         data: utils.chain3.sha3('reset()').substr(0, 10)
-    };
-
-    var signtx = utils.chain3.signTransaction(rawTx, privatekey);
-    var transHash = utils.chain3.mc.sendRawTransaction(signtx);
-    logger.info("transHash:", transHash);
-    utils.waitBlockForTransaction(transHash);
-}
-
-
-function removeMonitorInfo() {
-
-    var rawTx = {
-        from: baseaddr,
-        to: subchainaddr,
-        nonce: utils.chain3.toHex(utils.getNonce(baseaddr)),
-        gasLimit: utils.chain3.toHex("9000000"),
-        gasPrice: utils.chain3.toHex(utils.chain3.mc.gasPrice),
-        chainId: utils.chain3.toHex(utils.chain3.version.network),
-        data: utils.chain3.sha3('removeMonitorInfo(address)').substr(0, 10) + utils.chain3.encodeParams(['address'], ['0xc648d9bb0a3d3cd6adb401fcafd4bd04dec7cd5b'])
-    };
-
-    var signtx = utils.chain3.signTransaction(rawTx, privatekey);
-    console.log(signtx)
-    var transHash = utils.chain3.mc.sendRawTransaction(signtx);
-    logger.info("transHash:", transHash);
-    utils.waitBlockForTransaction(transHash);
-}
-
-/**
- * 注册monitor节点
- * 
- * @param {address} monitor
- * @param {string} link //like 18.162.146.13:8546
- */
-function registerAsMonitor(monitor, link) {
-
-    var rawTx = {
-        from: baseaddr,
-        to: subchainaddr,
-        nonce: utils.chain3.toHex(utils.getNonce(baseaddr)),
-        gasLimit: utils.chain3.toHex("9000000"),
-        gasPrice: utils.chain3.toHex(utils.chain3.mc.gasPrice),
-        value: utils.chain3.toHex(utils.chain3.toSha(1, 'mc')), //需要一个moac的押金
-        chainId: utils.chain3.toHex(utils.chain3.version.network),
-        data: utils.chain3.sha3('registerAsMonitor(address,string)').substr(0, 10) + utils.chain3.encodeParams(['address', 'string'], [monitor, link])
     };
 
     var signtx = utils.chain3.signTransaction(rawTx, privatekey);

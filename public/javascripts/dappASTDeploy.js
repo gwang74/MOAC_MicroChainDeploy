@@ -60,8 +60,8 @@ function deployDapp(ercTotalSupply, ercRate) {
  * @param {number} amount （moac数量）
  */
 function buyMintToken(amount) {
-    var baseaddr = '0x67d97d7a1491e3e4d87821d4a86eb51b0ac0ffda';
-    var privatekey = 'bed8f35a130544c89685ae16adcaece6501e13d46a291e56f958e3627d53a043';
+    // var baseaddr = '0x67d97d7a1491e3e4d87821d4a86eb51b0ac0ffda';
+    // var privatekey = 'bed8f35a130544c89685ae16adcaece6501e13d46a291e56f958e3627d53a043';
     // 授权应用链相应数量的erc token
     logger.info('approve to microChain');
     var rawTx = {
@@ -202,7 +202,7 @@ function registerDapp(regDappAddr, dappOwner, dappABI) {
 
 // deployDapp(123456, 100);
 
-// buyMintToken(50);
+buyMintToken(50);
 
 // redeemFromMicroChain(10000);
 

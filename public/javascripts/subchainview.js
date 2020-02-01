@@ -1,7 +1,7 @@
 const Chain3 = require('chain3');
 
-var vnoderpc = 'https://moac12jcc7601.jccdex.cn:8550';
-var addr_subchainprotocolbase = '0x43c6e564187687377fc3935d3e857c9c05e70463'  // subchainprotocolbase 
+var vnoderpc = 'http://39.99.178.42:8545';
+var addr_subchainprotocolbase = '0xfc9a941dde1b9783f01e093206165e5f1c96b71e'  // subchainprotocolbase 
 
 
 // check chain3
@@ -23,14 +23,15 @@ var subchainprotocolbaseContract = chain3.mc.contract(JSON.parse(abi));
 var subchainprotocolbase = subchainprotocolbaseContract.at(addr_subchainprotocolbase);
 
 
-var count = subchainprotocolbase.subChainProtocol();
+// var count = subchainprotocolbase.scsApprovalList().length();
 
-console.log(" **********  subchainprotocolbase Contract scs count: " + count);
+// console.log(" **********  subchainprotocolbase Contract scs count: " + count);
 
-// for (i = 0; i < count; i++) {
-//     scs = subchainprotocolbase.scsArray(i);
-//     console.log(" **********  vnode scs:", subchainprotocolbase.scsApprovalList(scs).subchainAddr[0]);
-// }
+for (i = 0; i < 20; i++) {
+    scs = subchainprotocolbase.scsArray(i);
+    console.log(scs)
+    console.log(" **********  vnode scs:", subchainprotocolbase.scsApprovalList(scs).toString());
+}
 
 
 // console.log(subchainprotocolbase.bondMin());

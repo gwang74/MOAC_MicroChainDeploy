@@ -277,7 +277,6 @@ function registerScsToPool(proto, num, scs) {
     } else {
         logger.info("Cannot register SCSs with not enough deposit!", num);
     }
-
 }
 
 //Open the MicroChain register process
@@ -304,7 +303,7 @@ function addMicroChainFund(inaddr, num) {
 // num - deposit for VNODE to join the VNODE pool
 // data - VNODE register FUNCTION
 function vnoderegister(vnode, num, ip, via, rpcLink) {
-    var data = vnode.register.getData(vnode.address, via, ip, rpcLink)
+    var data = vnode.register.getData(via, via, ip, rpcLink)
     logger.info("Registering VNODE ......")
     sendtx(baseaddr, vnode.address, num, data)
 }
