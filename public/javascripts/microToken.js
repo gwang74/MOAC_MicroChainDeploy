@@ -14,7 +14,7 @@ var config = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../../contract.
 var subchainaddr = config['microChainAddr'];
 var dappAddr = config['dappAddr'];
 
-var tokenAddr = '0x71519fb71f9c48aa9cd529e2d83b33030fc56eb3'
+var tokenAddr = '0x1652a76c60a73467109527dfa06d306ddb01aa89'
 // BTC：0xfc9a941dde1b9783f01e093206165e5f1c96b71e
 // ETH：0xa0f62900bf0202b303445f088a60c83b6dad01b8
 // USDT：0x71519fb71f9c48aa9cd529e2d83b33030fc56eb3
@@ -25,7 +25,6 @@ mcObject.setVnodeAddress(vnodeVia);
 var tokenContract = mcObject.getDapp(subchainaddr, dappAbi, tokenAddr);
 
 var decimals = tokenContract.decimals()
-console.log('decimals', decimals);
 
 function getTokenInfo() {
     console.log('symbol', tokenContract.symbol());
@@ -81,12 +80,23 @@ function getMemo(_hash) {
     logger.info(memoStr);
 }
 
+function decodeLogs(_hash) {
+    var receipt = utils.chain3.scs.getReceiptByHash(subchainaddr, _hash);
+    let data = receipt.logs[0].data
+    let memo = Buffer.from(data, 'base64');
+    logger.info(memo);
+    logger.info(utils.chain3.fromSha(utils.chain3.toDecimal('0x' + memo.toString('hex'))));
+}
+
+
 // getTokenInfo();
 
-transfer('0x79d9cA6d65F3DfDe056737428FA444Ce96332F1e', 9999980);
+// transfer('0x79d9cA6d65F3DfDe056737428FA444Ce96332F1e', 8080.8);
 // console.log(new Date().getTime())
-getBalance('0x79d9cA6d65F3DfDe056737428FA444Ce96332F1e');
+// getBalance('0x8aacb5febf12546ca47fc5e9aa1bd1407378ad7a');
 // console.log(new Date().getTime())
+
+decodeLogs('0x5d1ac9535c84368e9bb8defbe92c7b023586326af46cc491f8252cf790e28e62');
 
 // getMemo('0x7833f7a259d0599396631eedbbd4084261a309633b6fd7958336f4697cd7f552');
 return
